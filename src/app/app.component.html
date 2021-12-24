@@ -1,0 +1,25 @@
+<div>
+
+<button type="button"  (click)="genForm()" >Drug 1</button>
+<br><br>
+<button type="button"  (click)="genForm1()" >Drug 2</button>
+ 
+<br><br>
+</div>
+<div *ngIf="hide">
+
+<form [formGroup]="dynamicForm"  novalidate >
+	<ng-container *ngFor="let controls of drug">
+		{{controls.label}}
+
+
+		<input [type]="controls.type"  *ngIf="controls.type!='dropdown'"/>
+    <select *ngIf="controls.type=='dropdown'">
+      
+      <option *ngFor="let c of controls.items" value={{c.value}}>{{c.text}}</option>
+
+      </select>
+    <br>
+  </ng-container>
+  <br>
+</form></div>
